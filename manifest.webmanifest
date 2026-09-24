@@ -1,0 +1,17 @@
+{
+  "name": "Fleur Milica",
+  "short_name": "Fleur",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#faf7f4",
+  "theme_color": "#faf7f4",
+  "description": "Milicin lični planner, budžet, navike, ciljevi i dnevnik.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

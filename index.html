@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"><meta name="theme-color" content="#faf7f4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Fleur Milica"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon.svg">
+<title>Fleur — Milica</title>
+<style>
+:root{--bg:#faf7f4;--card:#fffdfb;--ink:#39332f;--muted:#9c9188;--line:#eee5de;--rose:#d9a5a7;--rose2:#f2dfe0;--sage:#b7c5b1;--lav:#d8cadf;--gold:#d9bd86;--shadow:0 12px 35px #654d3b12}
+*{box-sizing:border-box}body{margin:0;background:#e7dfd9;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Avenir Next","Segoe UI",sans-serif}.app{max-width:440px;min-height:100vh;margin:auto;background:var(--bg);padding-bottom:92px}.top{padding:26px 20px 10px;display:flex;justify-content:space-between;align-items:center}.brand{font:32px Georgia,serif;letter-spacing:-1px}.round{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:var(--card)}.content{padding:0 17px}.hello{padding:14px 5px}.hello small,.muted{color:var(--muted);font-size:11px;letter-spacing:.4px}.hello h1{font:29px Georgia,serif;margin:5px 0;font-weight:400}.card{background:var(--card);border:1px solid var(--line);border-radius:23px;padding:17px;margin-bottom:13px;box-shadow:var(--shadow)}.section{font:20px Georgia,serif;margin:20px 4px 10px}.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat{background:#f7efeb;border-radius:19px;padding:15px}.stat b{font:24px Georgia,serif;font-weight:400}.stat small{display:block;color:var(--muted);margin-top:4px}.bar{height:7px;background:#eee8e3;border-radius:8px;overflow:hidden;margin:11px 0}.bar i{display:block;height:100%;background:var(--rose);border-radius:8px}.task,.expense,.wish,.trip{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid var(--line)}.task:last-child,.expense:last-child,.wish:last-child,.trip:last-child{border:0}.check{width:22px;height:22px;border:1px solid #cdbdb3;border-radius:50%;display:grid;place-items:center;font-size:12px;flex:none}.check.done{background:var(--sage);color:#fff;border-color:var(--sage)}.task small{display:block;color:var(--muted);margin-top:3px}.pill,button{font:inherit}.pill{border:0;background:var(--rose2);color:#765758;border-radius:18px;padding:8px 12px}.danger{background:#f3e2df}.tabs{display:flex;gap:7px;overflow:auto;margin:0 0 13px}.tabs button{white-space:nowrap;border:1px solid var(--line);background:var(--card);border-radius:18px;padding:8px 13px;color:var(--muted)}.tabs button.active{background:var(--rose2);color:#765758;border-color:transparent}.inputrow{display:flex;gap:7px;margin-top:10px}.inputrow input,.inputrow select,.card textarea{border:1px solid var(--line);background:#fff;border-radius:13px;padding:10px;min-width:0;outline:none;color:var(--ink)}.inputrow input{flex:1}.inputrow button{border:0;background:var(--rose);color:white;border-radius:13px;padding:0 15px}.money{font:31px Georgia,serif}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-size:12px}.calendar span{padding:7px 0;color:var(--muted)}.calendar .day{color:var(--ink)}.calendar .today{background:var(--rose2);border-radius:50%;font-weight:600}.emoji{font-size:27px}.circle{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#f7efeb}.view{display:none}.view.active{display:block}.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:440px;width:100%;height:78px;background:#fffdfbf2;backdrop-filter:blur(16px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:5}.nav{border:0;background:none;color:var(--muted);font-size:10px}.nav b{display:block;font-size:20px;font-weight:400;margin-bottom:3px}.nav.active{color:#b47679}.modal{position:fixed;inset:0;background:#3c302b55;display:none;align-items:flex-end;z-index:10}.sheet{max-width:440px;width:100%;margin:auto;background:var(--bg);border-radius:26px 26px 0 0;padding:20px}.sheet input,.sheet select{width:100%;padding:12px;border:1px solid var(--line);border-radius:13px;margin:6px 0}.sheet button{padding:12px;border:0;border-radius:14px;background:var(--rose);color:#fff;width:100%;margin-top:8px}.x{float:right;border:0;background:none;font-size:20px}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="brand">fleur</div><button class="round" onclick="openModal('settings')">☼</button></header>
+<main class="content">
+
+<section id="home" class="view active">
+<div class="hello"><small id="today"></small><h1>Dobro jutro, Milice 🌷</h1></div>
+<div class="card"><div class="row"><span class="emoji">🌸</span><span class="muted">Tvoj mali prostor</span></div><div style="font:18px Georgia,serif;line-height:1.4;margin-top:8px">„Ne moraš sve danas. Samo napravi sledeći lep korak.“</div></div>
+<div class="section">Danas</div>
+<div class="card" id="homeTasks"></div>
+<div class="grid2"><div class="stat"><b id="habitCount">0/4</b><small>navike danas</small></div><div class="stat"><b id="savedHome">0 RSD</b><small>uštedela ovog meseca</small></div></div>
+<div class="section">Brzi pregled</div>
+<div class="grid2"><div class="card"><span class="muted">Budžet</span><div class="money" id="budgetHome">0</div><span class="muted">RSD preostalo</span></div><div class="card"><span class="muted">Ciljevi</span><div class="money" id="goalHome">0%</div><span class="muted">prosečan napredak</span></div></div>
+</section>
+
+<section id="plan" class="view">
+<div class="hello"><small>PLANIRANJE</small><h1>Moj mesec</h1></div>
+<div class="tabs"><button class="active" onclick="planTab('calendar',this)">Kalendar</button><button onclick="planTab('tasks',this)">Obaveze</button><button onclick="planTab('goals',this)">Ciljevi</button></div>
+<div id="calendarPane">
+<div class="card"><div class="row"><button class="pill">‹</button><b>Septembar 2026</b><button class="pill">›</button></div><br><div class="calendar">
+<span>P</span><span>U</span><span>S</span><span>Č</span><span>P</span><span>S</span><span>N</span>
+<span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span class="today">24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
+</div></div>
+</div>
+<div id="tasksPane" style="display:none"><div class="card"><div id="tasks"></div><div class="inputrow"><input id="taskInput" placeholder="Dodaj obavezu..."><button onclick="addTask()">+</button></div></div></div>
+<div id="goalsPane" style="display:none"><div id="goals"></div><div class="card"><b>Dodaj cilj</b><div class="inputrow"><input id="goalInput" placeholder="npr. Uštedeti 30.000"><button onclick="addGoal()">+</button></div></div></div>
+</section>
+
+<section id="budget" class="view">
+<div class="hello"><small>MOJE FINANSIJE</small><h1>Budžet</h1></div>
+<div class="card"><span class="muted">Preostalo</span><div class="money" id="balance">0 RSD</div><div class="bar"><i id="budgetBar"></i></div><div class="row"><span class="muted">Prihodi <b id="income">0</b></span><span class="muted">Troškovi <b id="expenses">0</b></span></div></div>
+<div class="grid2"><div class="stat"><b id="budgetSaved">0</b><small>uštedeno</small></div><div class="stat"><b id="expenseCount">0</b><small>troškova</small></div></div>
+<div class="section">Dodaj trošak</div>
+<div class="card"><div class="inputrow"><input id="expenseName" placeholder="npr. namirnice"><input id="expenseAmount" type="number" placeholder="RSD"><button onclick="addExpense()">+</button></div></div>
+<div class="section">Troškovi</div><div class="card" id="expenseList"></div>
+</section>
+
+<section id="habits" class="view">
+<div class="hello"><small>MOJE RUTINE</small><h1>Navike</h1></div>
+<div id="habitList"></div>
+<div class="card"><b>Nova navika</b><div class="inputrow"><input id="habitInput" placeholder="npr. 8 čaša vode"><button onclick="addHabit()">+</button></div></div>
+</section>
+
+<section id="journal" class="view">
+<div class="hello"><small>MY LITTLE JOURNAL</small><h1>Dnevnik</h1></div>
+<div class="card"><div class="muted">Danas se osećam...</div><div style="font-size:32px;margin:13px 0">🥰 🌸 ✨</div><div class="muted">Jedna lepa stvar danas</div><textarea id="journalText" rows="4" style="width:100%;margin-top:8px" placeholder="Piši ovde..."></textarea><button class="pill" style="margin-top:8px" onclick="saveJournal()">Sačuvaj</button></div>
+<div class="section">Moji ciljevi</div><div id="journalGoals"></div>
+</section>
+
+<section id="more" class="view">
+<div class="hello"><small>MOJ ŽIVOT</small><h1>Sve na jednom mestu</h1></div>
+<div class="card"><div class="row"><span class="emoji">💅</span><div><b>Self-care</b><div class="muted">nega, termini, beauty rutina</div></div><button class="pill">Otvori</button></div></div>
+<div class="card"><div class="row"><span class="emoji">✈️</span><div><b>Putovanja</b><div class="muted">planovi, rezervacije, budžet</div></div><button class="pill">Otvori</button></div></div>
+<div class="card"><div class="row"><span class="emoji">🛍️</span><div><b>Wishlist</b><div class="muted">stvari koje želim</div></div><button class="pill" onclick="addWish()">Dodaj</button></div><div id="wishlist"></div></div>
+<div class="card"><div class="row"><span class="emoji">🌙</span><div><b>Mesečni pregled</b><div class="muted">raspoloženje, navike i ciljevi</div></div></div></div>
+</section>
+</main>
+
+<nav class="bottom">
+<button class="nav active" onclick="show('home',this)"><b>⌂</b>Početna</button>
+<button class="nav" onclick="show('plan',this)"><b>◫</b>Plan</button>
+<button class="nav" onclick="show('budget',this)"><b>₽</b>Budžet</button>
+<button class="nav" onclick="show('habits',this)"><b>♡</b>Navike</button>
+<button class="nav" onclick="show('more',this)"><b>✧</b>Više</button>
+</nav>
+</div>
+
+<div class="modal" id="settings"><div class="sheet"><button class="x" onclick="closeModal()">×</button><h2 style="font:24px Georgia,serif">Podešavanja</h2><label class="muted">Mesečni prihod</label><input id="incomeInput" type="number" placeholder="105000"><label class="muted">Mesečni limit troškova</label><input id="limitInput" type="number" placeholder="95000"><button onclick="saveSettings()">Sačuvaj</button></div></div>
+
+<script>
+const key='fleurMilicaV2';
+let data=JSON.parse(localStorage.getItem(key)||'null')||{income:105000,limit:95000,expenses:[],tasks:[{name:'Jutarnja rutina',time:'07:30',done:true},{name:'20 min šetnje',time:'18:00',done:false},{name:'Plan za sutra',time:'21:30',done:false}],habits:[{name:'Voda',done:false},{name:'Šetnja',done:false},{name:'Čitanje',done:false},{name:'Self-care',done:false}],goals:[],wishes:[],journal:''};
+function save(){localStorage.setItem(key,JSON.stringify(data));render()}
+function show(id,btn){document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));btn.classList.add('active');render()}
+function render(){
+const exp=data.expenses.reduce((a,x)=>a+x.amount,0),bal=data.income-exp;
+document.getElementById('today').textContent=new Date().toLocaleDateString('sr-RS',{weekday:'long',day:'numeric',month:'long'}).toUpperCase();
+document.getElementById('homeTasks').innerHTML=data.tasks.slice(0,4).map((x,i)=>`<div class="task"><div class="check ${x.done?'done':''}" onclick="toggleTask(${i})">${x.done?'✓':''}</div><div>${x.name}<small>${x.time||''}</small></div></div>`).join('');
+document.getElementById('tasks').innerHTML=data.tasks.map((x,i)=>`<div class="task"><div class="check ${x.done?'done':''}" onclick="toggleTask(${i})">${x.done?'✓':''}</div><div style="flex:1">${x.name}<small>${x.time||''}</small></div><button class="pill danger" onclick="delTask(${i})">×</button></div>`).join('');
+const hc=data.habits.filter(x=>x.done).length;document.getElementById('habitCount').textContent=hc+'/'+data.habits.length;
+document.getElementById('balance').textContent=bal.toLocaleString('sr-RS')+' RSD';document.getElementById('budgetHome').textContent=bal.toLocaleString('sr-RS');
+document.getElementById('income').textContent=data.income.toLocaleString('sr-RS');document.getElementById('expenses').textContent=exp.toLocaleString('sr-RS');
+document.getElementById('budgetSaved').textContent=Math.max(0,bal).toLocaleString('sr-RS');document.getElementById('savedHome').textContent=Math.max(0,bal).toLocaleString('sr-RS');document.getElementById('expenseCount').textContent=data.expenses.length;
+document.getElementById('budgetBar').style.width=Math.min(100,exp/data.limit*100)+'%';
+document.getElementById('expenseList').innerHTML=data.expenses.length?data.expenses.map((x,i)=>`<div class="expense"><span>🛍️ ${x.name}</span><b>${x.amount.toLocaleString('sr-RS')} RSD</b><button class="pill danger" onclick="delExpense(${i})">×</button></div>`).join(''):'<span class="muted">Još nema troškova.</span>';
+document.getElementById('habitList').innerHTML=data.habits.map((x,i)=>`<div class="card"><div class="row"><div><b>${x.name}</b><div class="muted">${x.done?'Danas završeno ✨':'Još nije označeno'}</div></div><div class="check ${x.done?'done':''}" onclick="toggleHabit(${i})">${x.done?'✓':''}</div></div><div class="bar"><i style="width:${x.done?100:43}%"></i></div></div>`).join('');
+document.getElementById('goals').innerHTML=data.goals.map((x,i)=>`<div class="card"><div class="row"><b>${x.name}</b><button class="pill" onclick="advanceGoal(${i})">${x.progress}%</button></div><div class="bar"><i style="width:${x.progress}%"></i></div></div>`).join('')||'<div class="card"><span class="muted">Dodaj svoj prvi cilj.</span></div>';
+const gp=data.goals.length?Math.round(data.goals.reduce((a,x)=>a+x.progress,0)/data.goals.length):0;document.getElementById('goalHome').textContent=gp+'%';
+document.getElementById('journalText').value=data.journal;document.getElementById('journalGoals').innerHTML=data.goals.map(x=>`<div class="card"><div class="row"><span>${x.name}</span><b>${x.progress}%</b></div></div>`).join('');
+document.getElementById('wishlist').innerHTML=data.wishes.map((x,i)=>`<div class="wish"><span style="flex:1">🛍️ ${x}</span><button class="pill danger" onclick="data.wishes.splice(${i},1);save()">×</button></div>`).join('');
+}
+function addTask(){let v=document.getElementById('taskInput').value.trim();if(v){data.tasks.push({name:v,time:'',done:false});document.getElementById('taskInput').value='';save()}}
+function toggleTask(i){data.tasks[i].done=!data.tasks[i].done;save()}function delTask(i){data.tasks.splice(i,1);save()}
+function addExpense(){let n=document.getElementById('expenseName').value.trim(),a=Number(document.getElementById('expenseAmount').value);if(n&&a){data.expenses.unshift({name:n,amount:a});document.getElementById('expenseName').value='';document.getElementById('expenseAmount').value='';save()}}
+function delExpense(i){data.expenses.splice(i,1);save()}
+function addHabit(){let v=document.getElementById('habitInput').value.trim();if(v){data.habits.push({name:v,done:false});document.getElementById('habitInput').value='';save()}}
+function toggleHabit(i){data.habits[i].done=!data.habits[i].done;save()}
+function addGoal(){let v=document.getElementById('goalInput').value.trim();if(v){data.goals.push({name:v,progress:0});document.getElementById('goalInput').value='';save()}}
+function advanceGoal(i){data.goals[i].progress=Math.min(100,data.goals[i].progress+10);save()}
+function addWish(){let v=prompt('Šta želiš da dodaš na wishlist?');if(v){data.wishes.push(v);save()}}
+function saveJournal(){data.journal=document.getElementById('journalText').value;save();alert('Sačuvano 🌸')}
+function planTab(t,b){['calendar','tasks','goals'].forEach(x=>document.getElementById(x+'Pane').style.display=x===t?'block':'none');document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
+function openModal(id){document.getElementById(id).style.display='flex';document.getElementById('incomeInput').value=data.income;document.getElementById('limitInput').value=data.limit}
+function closeModal(){document.querySelectorAll('.modal').forEach(x=>x.style.display='none')}
+function saveSettings(){data.income=Number(document.getElementById('incomeInput').value)||0;data.limit=Number(document.getElementById('limitInput').value)||0;save();closeModal()}
+render();
+</script>
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{});}</script></body></html>
